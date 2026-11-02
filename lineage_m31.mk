@@ -37,8 +37,47 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 ## Device configuration
 PRODUCT_NAME := lineage_m31
 PRODUCT_DEVICE := m31
-PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-M315F
+PRODUCT_BRAND := Samsung
+PRODUCT_MODEL := Galaxy M31
 PRODUCT_MANUFACTURER := samsung
 
+#DerpFest-AOSP
+DERPFEST_BUILD_TYPE := Official
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_NOT_USES_BLUR := false
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+TARGET_INCLUDE_STOCK_ARCORE := false
+TARGET_SUPPORTS_CALL_RECORDING := true
+TARGET_INCLUDE_ACCORD ?= false
+TARGET_SUPPORTS_OMX_SERVICE := false
+BYPASS_CHARGE_SUPPORTED := true
+TARGET_USES_DOLBY := true
+LINEAGE_VERSION_APPEND_TIME_OF_DAY := true
+
+#GMS
+WITH_GMS := true
+WITH_GAPPS := true
+WITH_GMS_COMMS_SUITE := false
+
+PRODUCT_COPY_FILES += \
+      vendor/pixel/gms/common/proprietary/product/etc/permissions/com.google.android.dialer.support.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/com.google.android.dialer.support.xml
+
+PRODUCT_PACKAGES += \
+      GoogleDialer \
+      PrebuiltBugle \
+      com.google.android.dialer.support
+      
+# Boot Properties 
 TARGET_BOOT_ANIMATION_RES := 1080
+USE_LEGACY_BOOTANIMATION := true
+
+# Charging Animation 
+TARGET_INCLUDE_PIXEL_CHARGER := true
+
+# Disable UDFPS animations ( unsupported )
+EXTRA_UDFPS_ICONS := false
+
+# Enable Material Design 3 Expressive
+PRODUCT_PRODUCT_PROPERTIES += \
+    is_expressive_design_enabled=true
